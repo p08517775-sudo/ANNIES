@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annie's | Servicio de Aseo</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: white;
+}
+
+.contenedor {
+  display: grid;
+  grid-template-columns: 47% 53%;
+  min-height: 100vh;
+}
+
+/* PANEL DEL VIDEO */
+.panel-video {
+  background: linear-gradient(145deg, #073b86, #0755b8, #0b70cb);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 35px;
+  text-align: center;
+}
+
+.panel-video h2 {
+  font-size: 25px;
+  margin-bottom: 12px;
+}
+
+.panel-video p {
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.video {
+  height: 72vh;
+  max-width: 100%;
+  aspect-ratio: 572 / 1018;
+  border: 4px solid white;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #071a32;
+  box-shadow: 0 20px 50px rgba(0,0,0,.3);
+}
+
+.video video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* PANEL DERECHO */
+.panel-info {
+  min-height: 100vh;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #ffffff;
+}
+
+.logo {
+  width: 360px;
+  max-width: 85%;
+  height: auto;
+  margin-bottom: 25px;
+}
+
+.subtitulo {
+  color: #0755b8;
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  color: #123b82;
+  font-size: clamp(38px, 4vw, 65px);
+  line-height: 1.1;
+}
+
+.mensaje {
+  max-width: 550px;
+  margin: 25px 0 30px;
+  color: #536b89;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.mensaje strong {
+  display: block;
+  color: #123b82;
+  margin-bottom: 10px;
+}
+
+/* BOTON WHATSAPP */
+.boton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 21px 32px;
+  background: linear-gradient(135deg, #0875d1, #0646a5);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 12px 30px rgba(7,85,184,.25);
+  transition: .3s;
+}
+
+.boton:hover {
+  transform: translateY(-4px);
+  background: #123b82;
+}
+
+.pie {
+  margin-top: 35px;
+  color: #7890ad;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+/* CELULARES */
+@media (max-width: 850px) {
+  .contenedor {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-video {
+    padding: 35px 15px;
+  }
+
+  .video {
+    height: 65vh;
+  }
+
+  .panel-info {
+    min-height: auto;
+    padding: 45px 20px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  .boton {
+    width: 100%;
+    max-width: 390px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="contenedor">
+
+  <!-- VIDEO A LA IZQUIERDA -->
+  <section class="panel-video">
+
+    <h2>La experiencia de nuestros clientes</h2>
+
+    <p>Una recomendación real de Annie's Servicio de Aseo</p>
+
+    <div class="video">
+      <video
+        id="videoAnnie"
+        autoplay
+        muted
+        loop
+        playsinline
+        controls
+        preload="auto">
+
+        <source src="testimonio_annies.mp4" type="video/mp4">
+
+        Tu navegador no soporta la reproducción del video.
+
+      </video>
+    </div>
+
+  </section>
+
+  <!-- INFORMACION A LA DERECHA -->
+  <section class="panel-info">
+
+    <img
+      src="logo_annies.jpg"
+      alt="Annie's Servicio de Aseo"
+      class="logo"
+    >
+
+    <p class="subtitulo">
+      LIMPIEZA Y CUIDADO DE TUS ESPACIOS
+    </p>
+
+    <h1>
+      Tu espacio limpio.<br>
+      Tu tranquilidad también.
+    </h1>
+
+    <p class="mensaje">
+
+      <strong>
+        ¿Tienes un negocio o una casa? ¡Contáctanos!
+      </strong>
+
+      En Annie’s nos preocupamos por cada detalle
+      para que disfrutes de espacios frescos,
+      ordenados e impecables.
+
+    </p>
+
+    <a
+      class="boton"
+      href="https://wa.me/56994876075"
+      target="_blank"
+      rel="noopener noreferrer">
+
+      ☎ CONTÁCTANOS POR WHATSAPP
+
+    </a>
+
+    <p class="pie">
+      ANNIE’S · SERVICIO DE ASEO
+    </p>
+
+  </section>
+
+</main>
+
+<script>
+const video = document.getElementById("videoAnnie");
+
+video.muted = true;
+video.defaultMuted = true;
+
+function reproducirVideo() {
+  video.play().catch(error => {
+    console.log("El navegador puede requerir iniciar el video manualmente.");
+  });
+}
+
+document.addEventListener("DOMContentLoaded", reproducirVideo);
+window.addEventListener("load", reproducirVideo);
+</script>
+
+</body>
+</html>
